@@ -1,8 +1,12 @@
 <?php
 
+include_once '../vendor/autoload.php';
+
+use AmoCRM\OAuth2\Client\Provider\AmoCRM;
+
 $ini = parse_ini_file('../api.ini');
 
-$provider = new \AmoCRM\OAuth2\Client\Provider\AmoCRM([
+$provider = new AmoCRM([
     'clientId' => $ini['api_clientId'],
     'clientSecret' => $ini['api_clientSecret'],
     'redirectUri' => $ini['api_redirectUri'],
