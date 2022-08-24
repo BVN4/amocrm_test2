@@ -28,3 +28,11 @@ services:
     ports:
       - "80:80"
       - "443:443"
+
+  composer:
+    image: composer:latest
+    container_name: composer
+    volumes:
+      - ./composer.json:/var/www/application/composer.json
+    working_dir: /var/www/application/
+    command: install --prefer-source --no-interaction
