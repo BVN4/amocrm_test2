@@ -15,7 +15,7 @@ $provider->setBaseDomain($accessToken->getValues()['baseDomain']);
 function factoryContact($i): array
 {
 	return [
-		"first_name" => "Contact ".$i,
+		'first_name' => 'Contact '.$i,
 	];
 }
 
@@ -27,7 +27,7 @@ function factoryContact($i): array
 function factoryCompany($i): array
 {
 	return [
-		"name" => "Company ".$i,
+		'name' => 'Company '.$i,
 	];
 }
 
@@ -39,10 +39,10 @@ function factoryCompany($i): array
 function factoryLead($i): array
 {
 	return [
-		"name" => "Lead ".$i,
-		"_embedded" => [
-			"contacts" => [factoryContact($i)],
-			"companies" => [factoryCompany($i)],
+		'name' => 'Lead '.$i,
+		'_embedded' => [
+			'contacts' => [factoryContact($i)],
+			'companies' => [factoryCompany($i)],
 		],
 	];
 }

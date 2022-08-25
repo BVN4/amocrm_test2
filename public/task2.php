@@ -8,15 +8,15 @@ $accessToken = $provider->getToken();
 $provider->setBaseDomain($accessToken->getValues()['baseDomain']);
 
 $formParams = [
-	"name" => "Custom value",
-	"type" => "multiselect",
-	"code" => 322,
-	"enums" => [
+	'name' => 'Custom value',
+	'type' => 'multiselect',
+	'code' => '322',
+	'enums' => [
 		[
-			"value" => "True",
+			'value' => 'True',
 		],
 		[
-			"value" => "False",
+			'value' => 'False',
 		],
 	]
 ];
