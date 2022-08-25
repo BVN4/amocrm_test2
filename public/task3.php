@@ -2,6 +2,7 @@
 
 include 'init.php';
 /** @var Auth $provider */
+/** @var array $ini */
 
 $accessToken = $provider->getToken();
 
@@ -16,7 +17,7 @@ while(true){
 			'id' => $contact['id'],
 			'custom_fields_values' => [
 				[
-					'field_code' => '322',
+					'field_code' => $ini['custom_field_code'],
 					'values' => factoryValue()
 				]
 			]

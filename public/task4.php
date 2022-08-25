@@ -2,6 +2,7 @@
 
 include 'init.php';
 /** @var Auth $provider */
+/** @var array $ini */
 
 $accessToken = $provider->getToken();
 
@@ -107,6 +108,21 @@ function getData(string $type, array $query): array
 
     table tbody tr:nth-child(2n) { background: #0001; }
 
+	table tbody tr span {
+		padding: 0 4px;
+		margin: 0 5px;
+	}
+
+	table tbody tr span.type-True {
+		background: #4caf5055;
+		color: #114413;
+	}
+
+	table tbody tr span.type-False {
+		background: #f4433655;
+		color: #5a140f;
+	}
+
 	.links {
 		text-align: center;
 		font-size: 1.5rem;
@@ -129,6 +145,7 @@ function getData(string $type, array $query): array
 			<th>Lead</th>
 			<th>Company</th>
 			<th>Contact</th>
+			<th>Custom field</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -144,6 +161,19 @@ function getData(string $type, array $query): array
 					}
 					echo '</td>';
 				} ?>
+
+				<td><?php
+					foreach($lead['_embedded']['contacts'] as $item){
+						foreach($additionalData['contacts'][$item['id']]['custom_fields_values'] as $field){
+							if($field['field_code'] === $ini['custom_field_code']){
+								foreach($field['values'] as $value){
+									echo '<span class="type-'.$value['value'].'">'.$value['value'].'</span>';
+								}
+								break;
+							}
+						}
+					}
+					?></td>
 
 			</tr>
 		<?php } ?>

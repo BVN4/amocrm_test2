@@ -2,6 +2,7 @@
 
 include 'init.php';
 /** @var Auth $provider */
+/** @var array $ini */
 
 $accessToken = $provider->getToken();
 
@@ -10,7 +11,7 @@ $provider->setBaseDomain($accessToken->getValues()['baseDomain']);
 $formParams = [
 	'name' => 'Custom value',
 	'type' => 'multiselect',
-	'code' => '322',
+	'code' => $ini['custom_field_code'],
 	'enums' => [
 		[
 			'value' => 'True',
