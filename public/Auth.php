@@ -56,6 +56,7 @@ class Auth extends AmoCRM
 			'accessToken' => $accessToken->getToken(),
 			'refreshToken' => $accessToken->getRefreshToken(),
 			'expires' => $accessToken->getExpires(),
+			'baseDomain' => $this->getBaseDomain()
 		];
 
 		file_put_contents(self::TOKEN_FILE, json_encode($data));
@@ -74,12 +75,13 @@ class Auth extends AmoCRM
 			&& isset($accessToken['accessToken'])
 			&& isset($accessToken['refreshToken'])
 			&& isset($accessToken['expires'])
+			&& isset($accessToken['baseDomain'])
 		) {
 			return new AccessToken([
 				'access_token' => $accessToken['accessToken'],
 				'refresh_token' => $accessToken['refreshToken'],
 				'expires' => $accessToken['expires'],
-				'baseDomain' => $this->getBaseDomain(),
+				'baseDomain' => $accessToken['baseDomain'],
 			]);
 		} else {
 			exit('Invalid access token ' . var_export($accessToken, true));
